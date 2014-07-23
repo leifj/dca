@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="jumbotron">
+<h1>Got DANE keys?</h1>
+<p>We'll sign them for you!</p>
+<a href="/request" class="btn btn-success btn-large">Request a certificate</a>
+<a href="/static/ca.crt" class="btn btn-warning btn-large">Install CA Certificate</a>
+<p><a href="/about">... tell me more</a></p>
+</div>
+{% endblock %}

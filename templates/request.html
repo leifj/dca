@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="page-header">Request a Certificate</h1>
+
+<p>Submit a certificate request (CSR) or X.509 certificate in PEM format along with a domain name. If the public key matches the DANE record (port 443) for the domain this CA will sign your public key. Only the public key of the CSR/X.509 will be used. If DANE verification succeeds you will get a X.509 certificate with your requested domain name.</p>
+
+<form role="form" method="POST" action="/request" enctype="multipart/form-data">
+   <input name=_csrf_token type=hidden value="{{ csrf_token() }}">
+   <div id="domain" class="form-group">
+      <label for="domain_input">Domain</label>
+      <input type="text" placeholder="www.example.com" name="domain" value="{{domain}}" class="form-control" id="domain_input"/>
+      <p class="help-block">{{domain_error}}</p>
+   </div>
+   <div id="csr" class="form-group">
+      <label for="csr_input">PEM</label>
+      <textarea id="csr_input" class="form-control" rows="10" cols="80" name="csr" placeholder="Please copy & paste PEM CSR or X509 here...">{{csr}}</textarea>
+      <p class="help-block">{{csr_error}}</p>
+   </div>
+   <div class="buttons">
+     <button type="submit" class="btn btn-success">Request Certificate</button>
+     <a href="/" class="btn btn-warning">Cancel</a>
+   </div>
+</form>
+{% endblock %}
+{% block js %}
+$(function() {
+
+$('#csrtab a').click(function (e) {
+  e.preventDefault()
+  $(this).tab('show')
+})
+
+{% if csr_error %}
+$('#csr').addClass('has-error');
+{% endif %}
+
+{% if domain_error %}
+$('#domain').addClass('has-error');
+{% endif %}
+
+});
+{% endblock %}

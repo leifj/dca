@@ -1,0 +1,5 @@
+{% extends "base.html" %}
+{% block content %}
+<p>Most browsers do not (yet) support the DANE-validated CA. Until that changes you must manually install the CA certificate in your trust store. Klick on the button below to begin the process. You may have to save the certificate and manually import it from your browsers settings.</p>
+<a href="/static/ca.crt" class="btn btn-success btn-large">Download CA Certificate</a>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="page-header">{{job.id}}</h1>
+{% if job.result %}
+<pre class="pre-scrollable">
+{{job.result}}
+</pre>
+{% else %}
+<a href="/status/{{job.id}}">job is pending... reload</a>
+<script>setInterval("location.reload();",1000);</script>
+{% endif %}
+{% endblock %}
