@@ -10,7 +10,7 @@ The DANE-validated CA takes as input a public key (in varous popular formats) an
 Play with it
 -----------
 
-A test-instance is running a https://dane.lab.sunet.se
+A test-instance is running a http://dane.lab.sunet.se
 
 Running your own
 ----------
